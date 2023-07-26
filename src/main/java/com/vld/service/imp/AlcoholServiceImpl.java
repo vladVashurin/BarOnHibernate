@@ -1,37 +1,40 @@
-package com.vld.vld.service.imp;
+package com.vld.service.imp;
 
 
 
 
 
-import com.vld.vld.model.Alcohol;
-import com.vld.vld.service.AlcoholService;
+import com.vld.model.Alcohol;
+import com.vld.repository.AlcoholRepository;
+import com.vld.service.AlcoholService;
 
 import java.util.List;
 
 public class AlcoholServiceImpl implements AlcoholService {
+
+    AlcoholRepository repository = new AlcoholRepository();
     @Override
     public Alcohol get(Long id) {
-        return null;
+       return repository.get(id);
     }
 
     @Override
     public List<Alcohol> getAll() {
-        return null;
+        return repository.getAll();
     }
 
     @Override
     public Alcohol create(Alcohol alcohol) {
-        return null;
+        return repository.create(alcohol);
     }
 
     @Override
     public Alcohol update(Alcohol alcohol) {
-        return null;
+        return repository.update(alcohol);
     }
 
     @Override
     public void delete(Long id) {
-
+repository.delete(id);
     }
 }

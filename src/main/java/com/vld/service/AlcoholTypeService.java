@@ -1,7 +1,7 @@
-package com.vld.vld.service;
+package com.vld.service;
 
 
-import com.vld.vld.model.AlcoholType;
+import com.vld.model.AlcoholType;
 
 import java.util.List;
 

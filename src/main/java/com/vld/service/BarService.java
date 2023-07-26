@@ -1,7 +1,7 @@
-package com.vld.vld.service;
+package com.vld.service;
 
 
-import com.vld.vld.model.Bar;
+import com.vld.model.Bar;
 
 import java.util.List;
 

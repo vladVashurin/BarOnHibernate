@@ -7,7 +7,7 @@ import com.vld.service.BarService;
 
 import java.util.List;
 
-public class BarServiceImp implements BarService {
+public class BarServiceImpl implements BarService {
 
     BarRepository barRepository = new BarRepository();
 

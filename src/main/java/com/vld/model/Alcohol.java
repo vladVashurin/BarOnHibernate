@@ -1,26 +1,24 @@
-package com.vld.vld.model;
+package com.vld.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "alcohol")
+@Entity(name = "alcohol")
+//@Table(name = "alcohol")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class Alcohol extends AbstractEntity {
 
-public class Alcohol{
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
     @Column(name = "name")
     private String name;
 
-    public Alcohol() {
-    }
-
-    public Alcohol(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "alcohol_type_id")
+    private AlcoholType alcoholType;
 }

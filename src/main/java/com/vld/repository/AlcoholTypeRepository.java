@@ -1,46 +1,60 @@
-package com.vld.vld.repository;
+package com.vld.repository;
 
 
-
-import com.vld.vld.model.AlcoholType;
-import com.vld.vld.utils.HibernateUtil;
+import com.vld.model.AlcoholType;
+import com.vld.utils.HibernateUtil;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
 
 public class AlcoholTypeRepository {
-    static {
-
+    public AlcoholType get(Long id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        AlcoholType aT = session.get(AlcoholType.class, id);
+        session.getTransaction().commit();
+        session.close();
+        return aT;
     }
-    AlcoholType get(Long id) {
-        return null;
-    }
 
-    List<AlcoholType> getAll() {
-        return null;
+    public List<AlcoholType> getAll() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<AlcoholType> alcoholTypes = session.createQuery("select a from alcohol_types a", AlcoholType.class).getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return alcoholTypes;
     }
 
     @Transactional
-    public static AlcoholType create(AlcoholType alcoholType) {
+    public AlcoholType create(AlcoholType alcoholType) {
 
-       Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        AlcoholType alcohol = new AlcoholType(null, 50d);
-        session.save(alcohol);
+        session.save(alcoholType);
         session.getTransaction().commit();
         session.close();
         return alcoholType;
     }
 
-    AlcoholType update(AlcoholType alcoholType) {
-        return null;
+    @Transactional
+    public AlcoholType update(AlcoholType alcoholType) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(alcoholType);
+        session.getTransaction().commit();
+        session.close();
+        return alcoholType;
     }
 
-    void delete(Long id) {
-
+    @Transactional
+    public void delete(Long id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.delete(get(id));
+        session.getTransaction().commit();
+        session.close();
     }
 }

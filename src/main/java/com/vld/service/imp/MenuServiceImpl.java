@@ -1,8 +1,8 @@
-package com.vld.vld.service.imp;
+package com.vld.service.imp;
 
 
-import com.vld.vld.model.Alcohol;
-import com.vld.vld.service.MenuService;
+import com.vld.service.MenuService;
+import com.vld.model.Alcohol;
 
 import java.util.List;
 

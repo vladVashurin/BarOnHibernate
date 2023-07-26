@@ -1,4 +1,4 @@
-package com.vld.vld.repository;
+package com.vld.repository;
 
 
 public class MenuRepository {
